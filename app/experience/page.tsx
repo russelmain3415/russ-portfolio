@@ -20,7 +20,7 @@ const roles = [
       "Developed a Barangay AI Chatbot integrating CNN models for document/ID verification.",
       "Created a Basic Sales Analytics system using Microsoft SQL Server to track items sold and consumer behavior.",
       "Engineered a Queue System using HTML5, CSS3, and Vanilla JavaScript to manage waiting lines.",
-      "Studied computer science fundamentals, data structures, and relational database management."
+      "Studied Information Technology fundamentals, data structures, and relational database management."
     ],
   },
 ];
