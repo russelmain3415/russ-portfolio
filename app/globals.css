@@ -1,26 +1,73 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --font-sans: var(--font-inter);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #0a0a0a;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #000000;
     --foreground: #ededed;
   }
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.parallax-section {
+  --parallax-offset: 0px;
+  --parallax-opacity: 1;
+  --parallax-scale: 1;
+}
+
+.parallax-content {
+  position: relative;
+  transform: translate3d(0, var(--parallax-offset), 0) scale(var(--parallax-scale));
+  opacity: var(--parallax-opacity);
+  will-change: transform;
+}
+
+.parallax-halo {
+  position: absolute;
+  inset: -20% 5% auto 5%;
+  height: 60%;
+  border-radius: 999px;
+  background: radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.18), transparent 60%),
+    radial-gradient(circle at 80% 30%, rgba(139, 92, 246, 0.18), transparent 65%);
+  filter: blur(6px);
+  transform: translate3d(0, calc(var(--parallax-offset) * -0.6), 0);
+  opacity: calc(var(--parallax-opacity) * 0.7);
+  pointer-events: none;
+  z-index: -1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .parallax-content {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  .parallax-halo {
+    transform: none !important;
+    opacity: 0.4 !important;
+  }
+}
+
+::selection {
+  background-color: var(--foreground);
+  color: var(--background);
 }
